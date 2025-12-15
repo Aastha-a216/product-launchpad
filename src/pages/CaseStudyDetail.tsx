@@ -1,6 +1,9 @@
 import { useParams, Link } from 'react-router-dom';
 import { ArrowLeft, ExternalLink, Clock, User, Wrench, TrendingUp, CheckCircle2 } from 'lucide-react';
+import { motion } from 'framer-motion';
 import { Layout } from '@/components/Layout';
+import { PageTransition } from '@/components/PageTransition';
+import { ScrollReveal } from '@/components/ScrollReveal';
 import { Button } from '@/components/ui/button';
 import { caseStudies, transactions, dashboardStats, orders, inventory, sellerStats, earnings, shifts, deliveryStats } from '@/data/mockData';
 import { cn } from '@/lib/utils';
@@ -118,173 +121,243 @@ const CaseStudyDetail = () => {
 
   return (
     <Layout>
-      {/* Hero */}
-      <section className={cn("relative py-20 bg-gradient-to-br", study.color)}>
-        <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
-        <div className="container mx-auto px-4 lg:px-8 relative z-10">
-          <Button variant="ghost" className="text-white/80 hover:text-white hover:bg-white/10 mb-8" asChild>
-            <Link to="/case-studies">
-              <ArrowLeft className="w-4 h-4 mr-2" />
-              Back to Case Studies
-            </Link>
-          </Button>
+      <PageTransition>
+        {/* Hero */}
+        <motion.section 
+          className={cn("relative py-20 bg-gradient-to-br", study.color)}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.5 }}
+        >
+          <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
+          <div className="container mx-auto px-4 lg:px-8 relative z-10">
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.2 }}
+            >
+              <Button variant="ghost" className="text-white/80 hover:text-white hover:bg-white/10 mb-8" asChild>
+                <Link to="/case-studies">
+                  <ArrowLeft className="w-4 h-4 mr-2" />
+                  Back to Case Studies
+                </Link>
+              </Button>
+            </motion.div>
 
-          <div className="max-w-4xl">
-            <span className="inline-block px-3 py-1 rounded-full bg-white/20 text-white text-sm font-medium mb-4">
-              {study.industry}
-            </span>
-            <h1 className="text-4xl lg:text-5xl font-bold text-white mb-4">
-              {study.title}
-            </h1>
-            <p className="text-xl text-white/80 mb-8">
-              {study.subtitle}
-            </p>
+            <div className="max-w-4xl">
+              <motion.span 
+                className="inline-block px-3 py-1 rounded-full bg-white/20 text-white text-sm font-medium mb-4"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.3 }}
+              >
+                {study.industry}
+              </motion.span>
+              <motion.h1 
+                className="text-4xl lg:text-5xl font-bold text-white mb-4"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.4 }}
+              >
+                {study.title}
+              </motion.h1>
+              <motion.p 
+                className="text-xl text-white/80 mb-8"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.5 }}
+              >
+                {study.subtitle}
+              </motion.p>
 
-            <div className="flex flex-wrap gap-6 text-white/70">
-              <div className="flex items-center gap-2">
-                <User className="w-4 h-4" />
-                <span>{study.role}</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <Clock className="w-4 h-4" />
-                <span>{study.duration}</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <Wrench className="w-4 h-4" />
-                <span>{study.tools.join(', ')}</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Overview */}
-      <section className="py-16">
-        <div className="container mx-auto px-4 lg:px-8">
-          <div className="max-w-4xl">
-            <h2 className="text-2xl font-bold text-foreground mb-4">Overview</h2>
-            <p className="text-lg text-muted-foreground leading-relaxed">
-              {content?.overview}
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* Problem & Persona */}
-      <section className="py-16 bg-secondary/30">
-        <div className="container mx-auto px-4 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-12">
-            <div>
-              <h2 className="text-2xl font-bold text-foreground mb-4">The Problem</h2>
-              <p className="text-muted-foreground leading-relaxed">
-                {content?.problem}
-              </p>
-            </div>
-            <div>
-              <h2 className="text-2xl font-bold text-foreground mb-4">User Persona</h2>
-              <div className="bg-card rounded-2xl p-6 border border-border/50">
-                <div className="flex items-center gap-4 mb-4">
-                  <div className="w-12 h-12 rounded-full bg-accent/10 flex items-center justify-center">
-                    <User className="w-6 h-6 text-accent" />
-                  </div>
-                  <div>
-                    <div className="font-semibold text-foreground">{content?.persona.name}</div>
-                    <div className="text-sm text-muted-foreground">{content?.persona.role}</div>
-                  </div>
+              <motion.div 
+                className="flex flex-wrap gap-6 text-white/70"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.6 }}
+              >
+                <div className="flex items-center gap-2">
+                  <User className="w-4 h-4" />
+                  <span>{study.role}</span>
                 </div>
-                <div className="space-y-3">
-                  <div>
-                    <span className="text-xs font-medium text-destructive">Pain Point</span>
-                    <p className="text-sm text-muted-foreground">{content?.persona.pain}</p>
-                  </div>
-                  <div>
-                    <span className="text-xs font-medium text-accent">Goal</span>
-                    <p className="text-sm text-muted-foreground">{content?.persona.goal}</p>
-                  </div>
+                <div className="flex items-center gap-2">
+                  <Clock className="w-4 h-4" />
+                  <span>{study.duration}</span>
                 </div>
-              </div>
+                <div className="flex items-center gap-2">
+                  <Wrench className="w-4 h-4" />
+                  <span>{study.tools.join(', ')}</span>
+                </div>
+              </motion.div>
             </div>
           </div>
-        </div>
-      </section>
+        </motion.section>
 
-      {/* Design Process */}
-      <section className="py-16">
-        <div className="container mx-auto px-4 lg:px-8">
-          <h2 className="text-2xl font-bold text-foreground mb-8">Design Process</h2>
-          <div className="grid md:grid-cols-5 gap-4">
-            {content?.process.map((item, index) => (
-              <div key={item.step} className="relative">
-                <div className="bg-card rounded-xl p-4 border border-border/50 h-full">
-                  <div className="w-8 h-8 rounded-full bg-accent/10 text-accent font-bold text-sm flex items-center justify-center mb-3">
-                    {index + 1}
-                  </div>
-                  <h3 className="font-semibold text-foreground mb-2">{item.step}</h3>
-                  <p className="text-sm text-muted-foreground">{item.desc}</p>
-                </div>
-                {index < 4 && (
-                  <div className="hidden md:block absolute top-1/2 -right-2 transform -translate-y-1/2 text-border">
-                    →
-                  </div>
-                )}
+        {/* Overview */}
+        <section className="py-16">
+          <div className="container mx-auto px-4 lg:px-8">
+            <ScrollReveal>
+              <div className="max-w-4xl">
+                <h2 className="text-2xl font-bold text-foreground mb-4">Overview</h2>
+                <p className="text-lg text-muted-foreground leading-relaxed">
+                  {content?.overview}
+                </p>
               </div>
-            ))}
+            </ScrollReveal>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Interactive Dashboard */}
-      <section className="py-16 bg-secondary/30">
-        <div className="container mx-auto px-4 lg:px-8">
-          <div className="flex items-center justify-between mb-8">
-            <div>
-              <h2 className="text-2xl font-bold text-foreground">Interactive Prototype</h2>
-              <p className="text-muted-foreground">Explore the live dashboard with mock data</p>
+        {/* Problem & Persona */}
+        <section className="py-16 bg-secondary/30">
+          <div className="container mx-auto px-4 lg:px-8">
+            <div className="grid lg:grid-cols-2 gap-12">
+              <ScrollReveal direction="left">
+                <h2 className="text-2xl font-bold text-foreground mb-4">The Problem</h2>
+                <p className="text-muted-foreground leading-relaxed">
+                  {content?.problem}
+                </p>
+              </ScrollReveal>
+              <ScrollReveal direction="right" delay={0.1}>
+                <h2 className="text-2xl font-bold text-foreground mb-4">User Persona</h2>
+                <motion.div 
+                  className="bg-card rounded-2xl p-6 border border-border/50"
+                  whileHover={{ scale: 1.02 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <div className="flex items-center gap-4 mb-4">
+                    <div className="w-12 h-12 rounded-full bg-accent/10 flex items-center justify-center">
+                      <User className="w-6 h-6 text-accent" />
+                    </div>
+                    <div>
+                      <div className="font-semibold text-foreground">{content?.persona.name}</div>
+                      <div className="text-sm text-muted-foreground">{content?.persona.role}</div>
+                    </div>
+                  </div>
+                  <div className="space-y-3">
+                    <div>
+                      <span className="text-xs font-medium text-destructive">Pain Point</span>
+                      <p className="text-sm text-muted-foreground">{content?.persona.pain}</p>
+                    </div>
+                    <div>
+                      <span className="text-xs font-medium text-accent">Goal</span>
+                      <p className="text-sm text-muted-foreground">{content?.persona.goal}</p>
+                    </div>
+                  </div>
+                </motion.div>
+              </ScrollReveal>
             </div>
-            <Button variant="accent" asChild>
-              <a href={study.figmaLink} target="_blank" rel="noopener noreferrer">
-                <ExternalLink className="w-4 h-4 mr-2" />
-                View in Figma
-              </a>
-            </Button>
           </div>
-          
-          <div className="bg-card rounded-2xl border border-border/50 overflow-hidden">
-            {renderDashboard()}
-          </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Key Decisions */}
-      <section className="py-16">
-        <div className="container mx-auto px-4 lg:px-8">
-          <h2 className="text-2xl font-bold text-foreground mb-8">Key UX Decisions</h2>
-          <div className="grid md:grid-cols-3 gap-6">
-            {content?.decisions.map((decision) => (
-              <div key={decision.title} className="bg-card rounded-xl p-6 border border-border/50">
-                <CheckCircle2 className="w-8 h-8 text-accent mb-4" />
-                <h3 className="font-semibold text-foreground mb-2">{decision.title}</h3>
-                <p className="text-sm text-muted-foreground">{decision.reason}</p>
-              </div>
-            ))}
+        {/* Design Process */}
+        <section className="py-16">
+          <div className="container mx-auto px-4 lg:px-8">
+            <ScrollReveal>
+              <h2 className="text-2xl font-bold text-foreground mb-8">Design Process</h2>
+            </ScrollReveal>
+            <div className="grid md:grid-cols-5 gap-4">
+              {content?.process.map((item, index) => (
+                <ScrollReveal key={item.step} delay={index * 0.1}>
+                  <motion.div 
+                    className="relative"
+                    whileHover={{ y: -5 }}
+                  >
+                    <div className="bg-card rounded-xl p-4 border border-border/50 h-full">
+                      <div className="w-8 h-8 rounded-full bg-accent/10 text-accent font-bold text-sm flex items-center justify-center mb-3">
+                        {index + 1}
+                      </div>
+                      <h3 className="font-semibold text-foreground mb-2">{item.step}</h3>
+                      <p className="text-sm text-muted-foreground">{item.desc}</p>
+                    </div>
+                    {index < 4 && (
+                      <div className="hidden md:block absolute top-1/2 -right-2 transform -translate-y-1/2 text-border">
+                        →
+                      </div>
+                    )}
+                  </motion.div>
+                </ScrollReveal>
+              ))}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Impact */}
-      <section className="py-16 bg-gradient-hero">
-        <div className="container mx-auto px-4 lg:px-8">
-          <h2 className="text-2xl font-bold text-primary-foreground mb-8">Impact & Results</h2>
-          <div className="grid md:grid-cols-3 gap-6">
-            {study.impact.map((item, index) => (
-              <div key={index} className="bg-primary-foreground/10 backdrop-blur-sm rounded-xl p-6 border border-primary-foreground/10">
-                <TrendingUp className="w-8 h-8 text-accent mb-4" />
-                <p className="text-primary-foreground font-medium">{item}</p>
+        {/* Interactive Dashboard */}
+        <section className="py-16 bg-secondary/30">
+          <div className="container mx-auto px-4 lg:px-8">
+            <ScrollReveal>
+              <div className="flex items-center justify-between mb-8">
+                <div>
+                  <h2 className="text-2xl font-bold text-foreground">Interactive Prototype</h2>
+                  <p className="text-muted-foreground">Explore the live dashboard with mock data</p>
+                </div>
+                <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                  <Button variant="accent" asChild>
+                    <a href={study.figmaLink} target="_blank" rel="noopener noreferrer">
+                      <ExternalLink className="w-4 h-4 mr-2" />
+                      View in Figma
+                    </a>
+                  </Button>
+                </motion.div>
               </div>
-            ))}
+            </ScrollReveal>
+            
+            <ScrollReveal delay={0.2}>
+              <motion.div 
+                className="bg-card rounded-2xl border border-border/50 overflow-hidden"
+                whileHover={{ scale: 1.005 }}
+                transition={{ duration: 0.3 }}
+              >
+                {renderDashboard()}
+              </motion.div>
+            </ScrollReveal>
           </div>
-        </div>
-      </section>
+        </section>
+
+        {/* Key Decisions */}
+        <section className="py-16">
+          <div className="container mx-auto px-4 lg:px-8">
+            <ScrollReveal>
+              <h2 className="text-2xl font-bold text-foreground mb-8">Key UX Decisions</h2>
+            </ScrollReveal>
+            <div className="grid md:grid-cols-3 gap-6">
+              {content?.decisions.map((decision, index) => (
+                <ScrollReveal key={decision.title} delay={index * 0.1}>
+                  <motion.div 
+                    className="bg-card rounded-xl p-6 border border-border/50"
+                    whileHover={{ y: -5, scale: 1.02 }}
+                  >
+                    <CheckCircle2 className="w-8 h-8 text-accent mb-4" />
+                    <h3 className="font-semibold text-foreground mb-2">{decision.title}</h3>
+                    <p className="text-sm text-muted-foreground">{decision.reason}</p>
+                  </motion.div>
+                </ScrollReveal>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Impact */}
+        <section className="py-16 bg-gradient-hero">
+          <div className="container mx-auto px-4 lg:px-8">
+            <ScrollReveal>
+              <h2 className="text-2xl font-bold text-primary-foreground mb-8">Impact & Results</h2>
+            </ScrollReveal>
+            <div className="grid md:grid-cols-3 gap-6">
+              {study.impact.map((item, index) => (
+                <ScrollReveal key={index} delay={index * 0.1}>
+                  <motion.div 
+                    className="bg-primary-foreground/10 backdrop-blur-sm rounded-xl p-6 border border-primary-foreground/10"
+                    whileHover={{ scale: 1.05 }}
+                  >
+                    <TrendingUp className="w-8 h-8 text-accent mb-4" />
+                    <p className="text-primary-foreground font-medium">{item}</p>
+                  </motion.div>
+                </ScrollReveal>
+              ))}
+            </div>
+          </div>
+        </section>
+      </PageTransition>
     </Layout>
   );
 };
