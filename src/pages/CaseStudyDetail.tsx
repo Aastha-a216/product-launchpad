@@ -52,6 +52,51 @@ const CaseStudyDetail = () => {
 
   const getCaseStudyContent = () => {
     switch (id) {
+      case 'chai-sutta-bar':
+        return {
+          overview: "Chai Sutta Bar is India's beloved kulhad chai brand with 500+ outlets across the country. This self-initiated product case study reimagines their customer loyalty experience—creating a digital layer that turns casual chai drinkers into repeat loyal users through gamification, emotional engagement, and founder-focused analytics.",
+          problem: "Offline loyalty is fragmented with no centralized digital identity for frequent customers. There's no emotional retention beyond price-based offers, and founders lack actionable user insights to understand customer behavior and drive repeat visits.",
+          persona: {
+            name: "Vikram Arora",
+            role: "Daily Chai Enthusiast - College Student",
+            pain: "Visits CSB 3-4 times a week but gets no recognition or rewards for loyalty",
+            goal: "Feel valued as a regular customer and get rewarded for consistent visits",
+            quote: "I love the vibe here, but there's no reason to not try the chai place next door."
+          },
+          process: [
+            { step: "Brand Immersion", desc: "Studied CSB's brand identity, website, and in-store experience to understand their unique positioning", icon: "☕" },
+            { step: "Opportunity Mapping", desc: "Identified gaps in customer retention and digital touchpoints across the chai journey", icon: "🎯" },
+            { step: "Concept Design", desc: "Created loyalty system concepts balancing gamification with brand authenticity", icon: "✏️" },
+            { step: "AI-Assisted Build", desc: "Used Lovable AI as execution partner with prompt engineering for UX logic constraints", icon: "🤖" },
+            { step: "Visual Polish", desc: "Refined UI with earthy colors, chai tones, and subtle micro-interactions", icon: "✨" },
+          ],
+          decisions: [
+            { title: "Limited Rewards", reason: "Too many rewards feel transactional. We designed scarce, meaningful rewards that feel earned—like unlocking achievements.", insight: "Delayed gratification builds emotional investment" },
+            { title: "Fraud Prevention", reason: "QR codes and store codes prevent fake check-ins. Time-based cooldowns and location awareness add security layers.", insight: "Trust enables generosity" },
+            { title: "Emotion Over Discounts", reason: "CSB sells an experience, not just chai. Rewards focus on exclusive access and recognition rather than percentage discounts.", insight: "Brand loyalty > price loyalty" },
+          ],
+          features: [
+            { name: "Smart Login", desc: "OTP-based authentication with fraud-aware verification", icon: "🔐" },
+            { name: "Visit Tracking", desc: "QR scan or store code for seamless check-ins", icon: "📍" },
+            { name: "Dynamic Rewards", desc: "Tiered rewards that unlock based on visit patterns", icon: "🎁" },
+            { name: "User Wallet", desc: "Progress tracker with earned rewards and milestones", icon: "💰" },
+            { name: "Founder Dashboard", desc: "Analytics on visits, retention trends, and customer insights", icon: "📊" },
+          ],
+          aiExecution: {
+            title: "AI + Human Collaboration",
+            approach: "Built using Lovable AI as an execution partner—not a decision-maker. AI handled rapid prototyping and code generation while human judgment drove all UX decisions, brand alignment, and strategic trade-offs.",
+            prompts: [
+              "Constrained reward frequency to prevent abuse",
+              "Enforced brand-consistent color palette",
+              "Structured gamification logic with clear rules",
+            ]
+          },
+          nextSteps: [
+            "Subscription chai passes for power users",
+            "Community challenges between regulars",
+            "Franchise-level analytics dashboard",
+          ]
+        };
       case 'fintech-dashboard':
         return {
           overview: "Designed a comprehensive merchant operations dashboard for a growing fintech platform. The solution enabled 10,000+ merchants to track payments, manage settlements, handle refunds, and resolve disputes—all from a single, intuitive interface.",
@@ -367,38 +412,138 @@ const CaseStudyDetail = () => {
           </div>
         </section>
 
-        {/* Interactive Dashboard */}
-        <section className="py-20 bg-gradient-subtle">
-          <div className="container mx-auto px-4 lg:px-8">
-            <ScrollReveal>
-              <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6 mb-10">
-                <div>
+        {/* Interactive Dashboard - Only show for case studies with dashboards */}
+        {renderDashboard() && (
+          <section className="py-20 bg-gradient-subtle">
+            <div className="container mx-auto px-4 lg:px-8">
+              <ScrollReveal>
+                <div className="mb-10">
                   <span className="text-accent font-medium text-sm uppercase tracking-wider mb-2 block">Prototype</span>
                   <h2 className="font-display text-display-sm text-foreground">Interactive Dashboard</h2>
                   <p className="text-muted-foreground mt-2">Explore the live prototype with realistic mock data</p>
                 </div>
-                <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.98 }}>
-                  <Button variant="accent" size="lg" asChild className="shadow-glow">
-                    <a href={study.figmaLink} target="_blank" rel="noopener noreferrer">
-                      <ExternalLink className="w-4 h-4" />
-                      Open in Figma
-                    </a>
-                  </Button>
+              </ScrollReveal>
+              
+              <ScrollReveal delay={0.2}>
+                <motion.div 
+                  className="bg-card rounded-3xl border border-border/50 overflow-hidden shadow-2xl"
+                  whileHover={{ scale: 1.003 }}
+                  transition={{ duration: 0.4 }}
+                >
+                  {renderDashboard()}
                 </motion.div>
+              </ScrollReveal>
+            </div>
+          </section>
+        )}
+
+        {/* CSB Features Section - Only for Chai Sutta Bar */}
+        {id === 'chai-sutta-bar' && content?.features && (
+          <section className="py-20 bg-gradient-subtle">
+            <div className="container mx-auto px-4 lg:px-8">
+              <ScrollReveal>
+                <div className="text-center mb-12">
+                  <span className="text-accent font-medium text-sm uppercase tracking-wider mb-3 block">Core Features</span>
+                  <h2 className="font-display text-display-sm text-foreground">Platform Capabilities</h2>
+                  <p className="text-muted-foreground mt-3 max-w-2xl mx-auto">
+                    Key features designed to create emotional loyalty without disrupting the in-store chai experience
+                  </p>
+                </div>
+              </ScrollReveal>
+              
+              <div className="grid md:grid-cols-3 lg:grid-cols-5 gap-6 max-w-6xl mx-auto">
+                {content.features.map((feature: { name: string; desc: string; icon: string }, index: number) => (
+                  <ScrollReveal key={feature.name} delay={index * 0.1}>
+                    <motion.div 
+                      className="bg-card rounded-2xl p-6 border border-border/50 text-center h-full group"
+                      whileHover={{ y: -8, scale: 1.02 }}
+                      transition={{ type: "spring", stiffness: 300 }}
+                    >
+                      <div className="text-4xl mb-4">{feature.icon}</div>
+                      <h3 className="font-display font-semibold text-foreground mb-2">{feature.name}</h3>
+                      <p className="text-sm text-muted-foreground">{feature.desc}</p>
+                    </motion.div>
+                  </ScrollReveal>
+                ))}
               </div>
-            </ScrollReveal>
-            
-            <ScrollReveal delay={0.2}>
-              <motion.div 
-                className="bg-card rounded-3xl border border-border/50 overflow-hidden shadow-2xl"
-                whileHover={{ scale: 1.003 }}
-                transition={{ duration: 0.4 }}
-              >
-                {renderDashboard()}
-              </motion.div>
-            </ScrollReveal>
-          </div>
-        </section>
+            </div>
+          </section>
+        )}
+
+        {/* AI Execution Section - Only for Chai Sutta Bar */}
+        {id === 'chai-sutta-bar' && content?.aiExecution && (
+          <section className="py-20">
+            <div className="container mx-auto px-4 lg:px-8">
+              <div className="max-w-4xl mx-auto">
+                <ScrollReveal>
+                  <div className="text-center mb-12">
+                    <span className="text-accent font-medium text-sm uppercase tracking-wider mb-3 block">Execution</span>
+                    <h2 className="font-display text-display-sm text-foreground">{content.aiExecution.title}</h2>
+                  </div>
+                </ScrollReveal>
+
+                <ScrollReveal delay={0.1}>
+                  <div className="bg-gradient-to-br from-amber-500/10 via-orange-500/5 to-red-500/10 rounded-2xl p-8 border border-amber-500/20 mb-8">
+                    <p className="text-lg text-foreground leading-relaxed mb-6">
+                      {content.aiExecution.approach}
+                    </p>
+                    <div className="space-y-3">
+                      <span className="text-sm font-semibold text-amber-600 uppercase tracking-wider">Prompt Engineering Examples:</span>
+                      <ul className="space-y-2">
+                        {content.aiExecution.prompts.map((prompt: string, index: number) => (
+                          <motion.li 
+                            key={index}
+                            className="flex items-start gap-3 text-muted-foreground"
+                            initial={{ opacity: 0, x: -20 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ delay: index * 0.1 }}
+                          >
+                            <CheckCircle2 className="w-5 h-5 text-amber-600 shrink-0 mt-0.5" />
+                            <span>{prompt}</span>
+                          </motion.li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+                </ScrollReveal>
+              </div>
+            </div>
+          </section>
+        )}
+
+        {/* What's Next Section - Only for Chai Sutta Bar */}
+        {id === 'chai-sutta-bar' && content?.nextSteps && (
+          <section className="py-20 bg-gradient-subtle">
+            <div className="container mx-auto px-4 lg:px-8">
+              <div className="max-w-4xl mx-auto">
+                <ScrollReveal>
+                  <div className="text-center mb-12">
+                    <span className="text-accent font-medium text-sm uppercase tracking-wider mb-3 block">Future Vision</span>
+                    <h2 className="font-display text-display-sm text-foreground">What I'd Build Next</h2>
+                  </div>
+                </ScrollReveal>
+
+                <div className="grid md:grid-cols-3 gap-6">
+                  {content.nextSteps.map((step: string, index: number) => (
+                    <ScrollReveal key={index} delay={index * 0.1}>
+                      <motion.div 
+                        className="bg-card rounded-2xl p-6 border border-border/50 text-center"
+                        whileHover={{ y: -5, scale: 1.02 }}
+                        transition={{ type: "spring", stiffness: 300 }}
+                      >
+                        <div className="w-10 h-10 rounded-full bg-accent/10 flex items-center justify-center mx-auto mb-4">
+                          <span className="text-accent font-bold">{index + 1}</span>
+                        </div>
+                        <p className="text-foreground font-medium">{step}</p>
+                      </motion.div>
+                    </ScrollReveal>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </section>
+        )}
 
         {/* Key Decisions */}
         <section className="py-20">
