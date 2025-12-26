@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { ArrowRight, Sparkles, Briefcase, GraduationCap, ArrowUpRight, MousePointer2 } from 'lucide-react';
+import { ArrowRight, Sparkles, TrendingUp, Target, BarChart3, PenTool, Users, Zap, CheckCircle2, Instagram, Youtube, Linkedin, MessageCircle, ArrowUpRight } from 'lucide-react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { useRef } from 'react';
 import { Button } from '@/components/ui/button';
@@ -20,10 +20,103 @@ const Index = () => {
   const y = useTransform(scrollYProgress, [0, 1], [0, 150]);
   const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
 
+  const approachSteps = [
+    {
+      icon: Target,
+      title: 'Research & Audience',
+      description: 'Deep-dive into audience personas, competitor analysis, and market trends to inform strategy.',
+      color: 'from-blue-500/20 to-indigo-500/20',
+      iconColor: 'text-blue-500'
+    },
+    {
+      icon: PenTool,
+      title: 'Content Planning',
+      description: 'Story-driven content calendars with hooks, narratives, and platform-specific formats.',
+      color: 'from-purple-500/20 to-pink-500/20',
+      iconColor: 'text-purple-500'
+    },
+    {
+      icon: Zap,
+      title: 'Platform Execution',
+      description: 'Tailored content for each platform—Instagram reels, LinkedIn carousels, Twitter threads.',
+      color: 'from-amber-500/20 to-orange-500/20',
+      iconColor: 'text-amber-500'
+    },
+    {
+      icon: BarChart3,
+      title: 'Measure & Optimize',
+      description: 'Track engagement, analyze performance, and iterate for continuous growth.',
+      color: 'from-emerald-500/20 to-teal-500/20',
+      iconColor: 'text-emerald-500'
+    }
+  ];
+
+  const contentSamples = [
+    {
+      type: 'Instagram Reel',
+      title: 'Behind the Brand',
+      description: 'A day in the life at Chai Sutta Bar—authentic, raw, relatable content that builds connection.',
+      engagement: '15K+ potential views',
+      platform: Instagram
+    },
+    {
+      type: 'LinkedIn Post',
+      title: 'Brand Story Thread',
+      description: 'How a ₹3 chai became a ₹300Cr empire—storytelling that educates and inspires.',
+      engagement: '500+ reactions',
+      platform: Linkedin
+    },
+    {
+      type: 'Campaign Concept',
+      title: '#ChaiPeCharcha',
+      description: 'User-generated content campaign encouraging customers to share their chai moments.',
+      engagement: 'Community building',
+      platform: MessageCircle
+    }
+  ];
+
+  const tools = [
+    { name: 'Instagram', category: 'Platform' },
+    { name: 'LinkedIn', category: 'Platform' },
+    { name: 'YouTube', category: 'Platform' },
+    { name: 'Twitter/X', category: 'Platform' },
+    { name: 'Canva', category: 'Creation' },
+    { name: 'CapCut', category: 'Creation' },
+    { name: 'Meta Business Suite', category: 'Analytics' },
+    { name: 'Google Analytics', category: 'Analytics' },
+    { name: 'Hootsuite', category: 'Management' },
+    { name: 'Buffer', category: 'Management' },
+    { name: 'Notion', category: 'Planning' },
+    { name: 'ChatGPT', category: 'AI Tools' }
+  ];
+
+  const whyHireMe = [
+    {
+      title: 'Strategic Thinker',
+      description: 'I don\'t just post—I plan with purpose. Every piece of content ties back to business goals.'
+    },
+    {
+      title: 'Creative & Consistent',
+      description: 'Fresh ideas delivered on schedule. I understand that consistency builds audiences.'
+    },
+    {
+      title: 'Data-Informed',
+      description: 'I track what works, learn what doesn\'t, and optimize relentlessly.'
+    },
+    {
+      title: 'Fast Learner',
+      description: 'Platforms evolve, algorithms change—I stay curious and adapt quickly.'
+    },
+    {
+      title: 'Ownership Mentality',
+      description: 'I treat brand accounts like my own. Every post represents the brand\'s voice and values.'
+    }
+  ];
+
   return (
     <Layout>
       <PageTransition>
-        {/* Hero Section - Premium */}
+        {/* Hero Section - Social Media Manager Focus */}
         <section ref={heroRef} className="relative min-h-screen overflow-hidden flex items-center">
           {/* Animated Background */}
           <div className="absolute inset-0 bg-gradient-mesh" />
@@ -64,7 +157,7 @@ const Index = () => {
                     <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-75"></span>
                     <span className="relative inline-flex rounded-full h-2 w-2 bg-accent"></span>
                   </span>
-                  Available for Associate Product Designer roles
+                  Open for Social Media Manager roles
                 </motion.div>
                 
                 {/* Main Headline */}
@@ -74,10 +167,10 @@ const Index = () => {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.3, duration: 0.6 }}
                 >
-                  <span className="block">I design</span>
-                  <span className="block gradient-text">products that</span>
+                  <span className="block">I help brands grow</span>
+                  <span className="block gradient-text">through strategy-led</span>
                   <span className="block">
-                    scale
+                    social media
                     <motion.span 
                       className="inline-block ml-2"
                       animate={{ rotate: [0, 10, 0] }}
@@ -88,15 +181,26 @@ const Index = () => {
                   </span>
                 </motion.h1>
                 
-                {/* Subheadline */}
-                <motion.p 
-                  className="text-lg lg:text-xl text-muted-foreground leading-relaxed mb-10 max-w-xl"
+                {/* Subheadline - Process Flow */}
+                <motion.div 
+                  className="mb-10"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.5, duration: 0.5 }}
                 >
-                  Product Designer crafting intuitive experiences for <span className="text-foreground font-medium">fintech</span>, <span className="text-foreground font-medium">SaaS</span>, and <span className="text-foreground font-medium">marketplace</span> startups. I transform complex workflows into elegant, user-centered solutions.
-                </motion.p>
+                  <p className="text-lg lg:text-xl text-muted-foreground leading-relaxed mb-4 max-w-xl">
+                    Not random posts. <span className="text-foreground font-medium">Strategic content</span> that builds audiences, drives engagement, and grows brands.
+                  </p>
+                  <div className="flex flex-wrap items-center gap-2 text-sm text-muted-foreground">
+                    <span className="px-3 py-1 rounded-full bg-secondary/50">Strategy</span>
+                    <ArrowRight className="w-4 h-4 text-accent" />
+                    <span className="px-3 py-1 rounded-full bg-secondary/50">Content</span>
+                    <ArrowRight className="w-4 h-4 text-accent" />
+                    <span className="px-3 py-1 rounded-full bg-secondary/50">Engagement</span>
+                    <ArrowRight className="w-4 h-4 text-accent" />
+                    <span className="px-3 py-1 rounded-full bg-secondary/50">Analytics</span>
+                  </div>
+                </motion.div>
 
                 {/* CTAs */}
                 <motion.div 
@@ -112,16 +216,16 @@ const Index = () => {
                   >
                     <Button variant="hero" size="xl" asChild className="group">
                       <Link to="/case-studies">
-                        Explore My Work
+                        View Case Studies
                         <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
                       </Link>
                     </Button>
                   </motion.div>
                   <motion.div whileHover={{ scale: 1.03, y: -2 }} whileTap={{ scale: 0.98 }}>
                     <Button variant="subtle" size="xl" asChild>
-                      <Link to="/ai-recruiter">
-                        <Sparkles className="w-5 h-5" />
-                        AI Recruiter View
+                      <Link to="/contact">
+                        <MessageCircle className="w-5 h-5" />
+                        Let's Talk
                       </Link>
                     </Button>
                   </motion.div>
@@ -136,15 +240,15 @@ const Index = () => {
                 >
                   <div className="flex items-center gap-2 text-muted-foreground">
                     <div className="w-8 h-8 rounded-lg bg-secondary flex items-center justify-center">
-                      <GraduationCap className="w-4 h-4" />
+                      <TrendingUp className="w-4 h-4" />
                     </div>
-                    <span>B.Tech, Information Technology</span>
+                    <span>Strategy-First Approach</span>
                   </div>
                   <div className="flex items-center gap-2 text-muted-foreground">
                     <div className="w-8 h-8 rounded-lg bg-secondary flex items-center justify-center">
-                      <Briefcase className="w-4 h-4" />
+                      <Users className="w-4 h-4" />
                     </div>
-                    <span>3+ Case Studies</span>
+                    <span>Audience-Centric Content</span>
                   </div>
                 </motion.div>
               </motion.div>
@@ -175,14 +279,14 @@ const Index = () => {
                   <div className="relative w-72 h-72 lg:w-[400px] lg:h-[480px] rounded-3xl overflow-hidden shadow-2xl">
                     <img
                       src={profileImage}
-                      alt="Aastha Srivastava - Product Designer"
+                      alt="Aastha Srivastava - Social Media Strategist"
                       className="w-full h-full object-cover"
                     />
                     {/* Overlay gradient */}
                     <div className="absolute inset-0 bg-gradient-to-t from-primary/20 via-transparent to-transparent" />
                   </div>
                   
-                  {/* Floating Card - Stats */}
+                  {/* Floating Card - Social Platforms */}
                   <motion.div 
                     className="absolute -bottom-6 -left-6 glass rounded-2xl p-5 shadow-elevated"
                     initial={{ opacity: 0, x: -30, y: 30 }}
@@ -190,18 +294,26 @@ const Index = () => {
                     transition={{ delay: 0.9, type: "spring" }}
                     whileHover={{ scale: 1.05, y: -5 }}
                   >
-                    <div className="flex items-center gap-4">
-                      <div className="w-12 h-12 rounded-xl bg-gradient-accent flex items-center justify-center">
-                        <span className="text-accent-foreground text-lg font-bold">3+</span>
+                    <div className="flex items-center gap-3">
+                      <div className="flex -space-x-2">
+                        <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-pink-500 to-rose-500 flex items-center justify-center">
+                          <Instagram className="w-5 h-5 text-white" />
+                        </div>
+                        <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-blue-600 to-blue-700 flex items-center justify-center">
+                          <Linkedin className="w-5 h-5 text-white" />
+                        </div>
+                        <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-red-500 to-red-600 flex items-center justify-center">
+                          <Youtube className="w-5 h-5 text-white" />
+                        </div>
                       </div>
                       <div>
-                        <div className="text-sm font-semibold text-foreground">End-to-End</div>
-                        <div className="text-xs text-muted-foreground">Case Studies</div>
+                        <div className="text-sm font-semibold text-foreground">Multi-Platform</div>
+                        <div className="text-xs text-muted-foreground">Strategy Expert</div>
                       </div>
                     </div>
                   </motion.div>
 
-                  {/* Floating Card - Skills */}
+                  {/* Floating Card - Content */}
                   <motion.div 
                     className="absolute -top-4 -right-4 glass rounded-2xl px-4 py-3 shadow-elevated"
                     initial={{ opacity: 0, x: 30, y: -30 }}
@@ -210,8 +322,8 @@ const Index = () => {
                     whileHover={{ scale: 1.05, y: -5 }}
                   >
                     <div className="flex items-center gap-2">
-                      <MousePointer2 className="w-4 h-4 text-accent" />
-                      <span className="text-sm font-medium text-foreground">UX • UI • Systems</span>
+                      <TrendingUp className="w-4 h-4 text-accent" />
+                      <span className="text-sm font-medium text-foreground">Content • Strategy • Growth</span>
                     </div>
                   </motion.div>
                 </div>
@@ -243,10 +355,57 @@ const Index = () => {
           </motion.div>
         </section>
 
-        {/* Featured Work Section */}
+        {/* My Approach Section */}
         <section className="py-24 lg:py-32 relative">
           <div className="absolute inset-0 bg-gradient-subtle" />
           <div className="container mx-auto px-4 lg:px-8 relative">
+            <ScrollReveal>
+              <div className="text-center mb-16">
+                <motion.span 
+                  className="inline-block text-accent font-medium text-sm uppercase tracking-wider mb-3"
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  viewport={{ once: true }}
+                >
+                  My Approach
+                </motion.span>
+                <h2 className="font-display text-display-md lg:text-display-lg text-foreground mb-4">
+                  How I Grow Brands on Social
+                </h2>
+                <p className="text-muted-foreground max-w-2xl mx-auto text-lg">
+                  A systematic approach that turns followers into fans and content into conversions.
+                </p>
+              </div>
+            </ScrollReveal>
+
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+              {approachSteps.map((step, index) => (
+                <ScrollReveal key={step.title} delay={index * 0.1}>
+                  <motion.div 
+                    className="relative bg-card rounded-2xl p-6 border border-border/50 h-full overflow-hidden group"
+                    whileHover={{ y: -8, scale: 1.02 }}
+                    transition={{ type: "spring", stiffness: 300 }}
+                  >
+                    <div className={`absolute inset-0 bg-gradient-to-br ${step.color} opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
+                    
+                    <div className="relative z-10">
+                      <div className={`w-12 h-12 rounded-xl bg-secondary flex items-center justify-center mb-4 ${step.iconColor}`}>
+                        <step.icon className="w-6 h-6" />
+                      </div>
+                      <div className="text-xs text-muted-foreground uppercase tracking-wider mb-2">Step {index + 1}</div>
+                      <h3 className="font-display font-semibold text-foreground text-lg mb-3">{step.title}</h3>
+                      <p className="text-sm text-muted-foreground leading-relaxed">{step.description}</p>
+                    </div>
+                  </motion.div>
+                </ScrollReveal>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Case Studies Section */}
+        <section className="py-24 lg:py-32">
+          <div className="container mx-auto px-4 lg:px-8">
             <ScrollReveal>
               <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-16">
                 <div>
@@ -259,11 +418,11 @@ const Index = () => {
                     Featured Work
                   </motion.span>
                   <h2 className="font-display text-display-md lg:text-display-lg text-foreground">
-                    Case Studies
+                    Strategy Case Studies
                   </h2>
                 </div>
                 <p className="text-muted-foreground max-w-md text-lg">
-                  Deep dives into real product challenges—from research to interactive prototypes.
+                  Real brand challenges with strategic thinking—from problem to execution.
                 </p>
               </div>
             </ScrollReveal>
@@ -288,6 +447,143 @@ const Index = () => {
                 </motion.div>
               </div>
             </ScrollReveal>
+          </div>
+        </section>
+
+        {/* Content Samples Section */}
+        <section className="py-24 lg:py-32 relative">
+          <div className="absolute inset-0 bg-gradient-subtle" />
+          <div className="container mx-auto px-4 lg:px-8 relative">
+            <ScrollReveal>
+              <div className="text-center mb-16">
+                <motion.span 
+                  className="inline-block text-accent font-medium text-sm uppercase tracking-wider mb-3"
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  viewport={{ once: true }}
+                >
+                  Content Ideas
+                </motion.span>
+                <h2 className="font-display text-display-md lg:text-display-lg text-foreground mb-4">
+                  Sample Content Concepts
+                </h2>
+                <p className="text-muted-foreground max-w-2xl mx-auto text-lg">
+                  A glimpse into how I think about content strategy and creative execution.
+                </p>
+              </div>
+            </ScrollReveal>
+
+            <div className="grid md:grid-cols-3 gap-8">
+              {contentSamples.map((sample, index) => (
+                <ScrollReveal key={sample.title} delay={index * 0.15}>
+                  <motion.div 
+                    className="bg-card rounded-2xl p-6 border border-border/50 h-full group"
+                    whileHover={{ y: -8, scale: 1.02 }}
+                    transition={{ type: "spring", stiffness: 300 }}
+                  >
+                    <div className="flex items-center gap-3 mb-4">
+                      <div className="w-10 h-10 rounded-xl bg-secondary flex items-center justify-center text-accent">
+                        <sample.platform className="w-5 h-5" />
+                      </div>
+                      <span className="text-xs uppercase tracking-wider text-muted-foreground font-medium">{sample.type}</span>
+                    </div>
+                    <h3 className="font-display font-semibold text-foreground text-lg mb-2">{sample.title}</h3>
+                    <p className="text-sm text-muted-foreground leading-relaxed mb-4">{sample.description}</p>
+                    <div className="flex items-center gap-2 text-xs text-accent font-medium">
+                      <TrendingUp className="w-3 h-3" />
+                      {sample.engagement}
+                    </div>
+                  </motion.div>
+                </ScrollReveal>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Tools & Skills Section */}
+        <section className="py-24 lg:py-32">
+          <div className="container mx-auto px-4 lg:px-8">
+            <ScrollReveal>
+              <div className="text-center mb-16">
+                <motion.span 
+                  className="inline-block text-accent font-medium text-sm uppercase tracking-wider mb-3"
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  viewport={{ once: true }}
+                >
+                  Toolkit
+                </motion.span>
+                <h2 className="font-display text-display-md lg:text-display-lg text-foreground mb-4">
+                  Tools & Platforms
+                </h2>
+                <p className="text-muted-foreground max-w-2xl mx-auto text-lg">
+                  The platforms and tools I use to create, manage, and analyze content.
+                </p>
+              </div>
+            </ScrollReveal>
+
+            <ScrollReveal delay={0.2}>
+              <div className="flex flex-wrap justify-center gap-3">
+                {tools.map((tool, index) => (
+                  <motion.div
+                    key={tool.name}
+                    className="px-5 py-3 rounded-xl bg-card border border-border/50 hover:border-accent/50 transition-colors"
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: index * 0.03 }}
+                    whileHover={{ y: -4, scale: 1.05 }}
+                  >
+                    <span className="text-sm font-medium text-foreground">{tool.name}</span>
+                  </motion.div>
+                ))}
+              </div>
+            </ScrollReveal>
+          </div>
+        </section>
+
+        {/* Why Hire Me Section */}
+        <section className="py-24 lg:py-32 relative">
+          <div className="absolute inset-0 bg-gradient-subtle" />
+          <div className="container mx-auto px-4 lg:px-8 relative">
+            <ScrollReveal>
+              <div className="text-center mb-16">
+                <motion.span 
+                  className="inline-block text-accent font-medium text-sm uppercase tracking-wider mb-3"
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  viewport={{ once: true }}
+                >
+                  Why Me
+                </motion.span>
+                <h2 className="font-display text-display-md lg:text-display-lg text-foreground mb-4">
+                  Why Work With Me
+                </h2>
+                <p className="text-muted-foreground max-w-2xl mx-auto text-lg">
+                  What I bring to the table beyond just posting content.
+                </p>
+              </div>
+            </ScrollReveal>
+
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
+              {whyHireMe.map((reason, index) => (
+                <ScrollReveal key={reason.title} delay={index * 0.1}>
+                  <motion.div 
+                    className="flex gap-4 p-6 rounded-2xl bg-card border border-border/50"
+                    whileHover={{ y: -4, scale: 1.02 }}
+                    transition={{ type: "spring", stiffness: 300 }}
+                  >
+                    <div className="flex-shrink-0">
+                      <CheckCircle2 className="w-6 h-6 text-accent" />
+                    </div>
+                    <div>
+                      <h3 className="font-display font-semibold text-foreground mb-2">{reason.title}</h3>
+                      <p className="text-sm text-muted-foreground leading-relaxed">{reason.description}</p>
+                    </div>
+                  </motion.div>
+                </ScrollReveal>
+              ))}
+            </div>
           </div>
         </section>
 
@@ -323,13 +619,13 @@ const Index = () => {
                       viewport={{ once: true }}
                     >
                       <Sparkles className="w-4 h-4" />
-                      AI-Powered Portfolio Feature
+                      AI-Powered Feature
                     </motion.div>
                     <h3 className="font-display text-display-sm lg:text-display-md text-primary-foreground mb-6">
-                      Experience My Portfolio Through AI
+                      Explore My Portfolio with AI
                     </h3>
                     <p className="text-primary-foreground/70 text-lg leading-relaxed mb-8">
-                      Get an instant assessment with simulated ATS scoring, skill analysis, and fit evaluation for Associate Product Designer roles.
+                      Get an instant analysis of my skills, experience, and fit for Social Media Manager roles through an AI-powered assessment.
                     </p>
                     <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.98 }}>
                       <Button variant="accent" size="xl" asChild className="shadow-glow">
@@ -341,7 +637,7 @@ const Index = () => {
                     </motion.div>
                   </div>
                   
-                  {/* ATS Preview Card */}
+                  {/* Preview Card */}
                   <div className="hidden lg:flex justify-end">
                     <motion.div 
                       className="bg-primary-foreground/10 backdrop-blur-md rounded-2xl p-8 border border-primary-foreground/10 w-full max-w-sm"
@@ -352,24 +648,24 @@ const Index = () => {
                     >
                       <div className="flex items-center gap-4 mb-6">
                         <div className="w-16 h-16 rounded-2xl bg-gradient-accent flex items-center justify-center shadow-glow">
-                          <span className="text-accent-foreground text-2xl font-bold">87</span>
+                          <span className="text-accent-foreground text-2xl font-bold">92</span>
                         </div>
                         <div>
-                          <div className="text-primary-foreground font-semibold text-lg">ATS Score</div>
-                          <div className="text-primary-foreground/60">High Match</div>
+                          <div className="text-primary-foreground font-semibold text-lg">Fit Score</div>
+                          <div className="text-primary-foreground/60">Social Media Manager</div>
                         </div>
                       </div>
                       <div className="space-y-4">
                         <div>
                           <div className="flex justify-between text-sm mb-2">
-                            <span className="text-primary-foreground/70">Profile Strength</span>
-                            <span className="text-accent font-medium">87%</span>
+                            <span className="text-primary-foreground/70">Strategy Strength</span>
+                            <span className="text-accent font-medium">92%</span>
                           </div>
                           <div className="h-2 bg-primary-foreground/10 rounded-full overflow-hidden">
                             <motion.div 
                               className="h-full bg-gradient-accent rounded-full"
                               initial={{ width: 0 }}
-                              whileInView={{ width: "87%" }}
+                              whileInView={{ width: "92%" }}
                               viewport={{ once: true }}
                               transition={{ duration: 1.2, delay: 0.5, ease: "easeOut" }}
                             />
@@ -377,7 +673,7 @@ const Index = () => {
                         </div>
                         <div className="pt-4 border-t border-primary-foreground/10">
                           <p className="text-primary-foreground/60 text-sm">
-                            ✓ Strong product design fundamentals
+                            ✓ Strong strategic thinking & execution
                           </p>
                         </div>
                       </div>
@@ -389,94 +685,16 @@ const Index = () => {
           </div>
         </section>
 
-        {/* Skills Overview */}
-        <section className="py-24 lg:py-32 relative">
-          <div className="absolute inset-0 bg-gradient-subtle" />
-          <div className="container mx-auto px-4 lg:px-8 relative">
-            <ScrollReveal>
-              <div className="text-center mb-16">
-                <motion.span 
-                  className="inline-block text-accent font-medium text-sm uppercase tracking-wider mb-3"
-                  initial={{ opacity: 0 }}
-                  whileInView={{ opacity: 1 }}
-                  viewport={{ once: true }}
-                >
-                  Expertise
-                </motion.span>
-                <h2 className="font-display text-display-md lg:text-display-lg text-foreground mb-4">
-                  Core Competencies
-                </h2>
-                <p className="text-muted-foreground max-w-2xl mx-auto text-lg">
-                  A strong foundation in research, design systems, and user-centered product thinking.
-                </p>
-              </div>
-            </ScrollReveal>
-
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-              {[
-                { 
-                  title: 'User Research', 
-                  items: ['User Interviews', 'Usability Testing', 'Journey Mapping', 'Persona Development'], 
-                  icon: '🔍',
-                  gradient: 'from-blue-500/10 to-indigo-500/10'
-                },
-                { 
-                  title: 'UX Design', 
-                  items: ['Information Architecture', 'Wireframing', 'Prototyping', 'Interaction Design'], 
-                  icon: '✏️',
-                  gradient: 'from-purple-500/10 to-pink-500/10'
-                },
-                { 
-                  title: 'UI Design', 
-                  items: ['Visual Design', 'Design Systems', 'Responsive Design', 'Motion Design'], 
-                  icon: '🎨',
-                  gradient: 'from-amber-500/10 to-orange-500/10'
-                },
-                { 
-                  title: 'Tools & Process', 
-                  items: ['Figma', 'Miro', 'Notion', 'Agile Workflow'], 
-                  icon: '🛠️',
-                  gradient: 'from-emerald-500/10 to-teal-500/10'
-                },
-              ].map((skill, index) => (
-                <ScrollReveal key={skill.title} delay={index * 0.1}>
-                  <motion.div 
-                    className={`relative bg-card rounded-2xl p-6 border border-border/50 h-full overflow-hidden group`}
-                    whileHover={{ y: -8, scale: 1.02 }}
-                    transition={{ type: "spring", stiffness: 300 }}
-                  >
-                    {/* Gradient background on hover */}
-                    <div className={`absolute inset-0 bg-gradient-to-br ${skill.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
-                    
-                    <div className="relative z-10">
-                      <div className="text-4xl mb-4">{skill.icon}</div>
-                      <h3 className="font-display font-semibold text-foreground text-lg mb-4">{skill.title}</h3>
-                      <ul className="space-y-2">
-                        {skill.items.map((item) => (
-                          <li key={item} className="text-sm text-muted-foreground flex items-center gap-2">
-                            <span className="w-1 h-1 rounded-full bg-accent" />
-                            {item}
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  </motion.div>
-                </ScrollReveal>
-              ))}
-            </div>
-          </div>
-        </section>
-
         {/* CTA Section */}
         <section className="py-24 lg:py-32">
           <div className="container mx-auto px-4 lg:px-8">
             <ScrollReveal>
               <div className="text-center max-w-3xl mx-auto">
                 <h2 className="font-display text-display-md lg:text-display-lg text-foreground mb-6">
-                  Let's build something <span className="gradient-text">meaningful</span> together
+                  Let's grow your brand <span className="gradient-text">together</span>
                 </h2>
                 <p className="text-muted-foreground text-lg mb-10">
-                  I'm actively seeking Associate Product Designer opportunities where I can contribute to impactful products.
+                  I'm actively seeking Social Media Manager opportunities where I can drive real growth through strategic content.
                 </p>
                 <div className="flex flex-wrap justify-center gap-4">
                   <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.98 }}>
