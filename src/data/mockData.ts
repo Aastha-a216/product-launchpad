@@ -135,6 +135,22 @@ export const skills = {
 // Case Study Data - Enhanced for stronger storytelling
 export const caseStudies = [
   {
+    id: 'firstclub',
+    title: 'FirstClub',
+    subtitle: 'Improving Onboarding, Exclusivity & Discovery',
+    description: 'Redesigned the onboarding and discovery experience for a members-only premium experiences platform—improving clarity, exclusivity perception, and early engagement for first-time users.',
+    industry: 'Premium Experiences',
+    role: 'Product Designer',
+    duration: '3 weeks',
+    team: 'Solo Project (Case Study)',
+    impact: ['Cleaner onboarding', 'Stronger premium feel', 'Intentional discovery'],
+    tools: ['Figma', 'Notion', 'Miro', 'AI Tools'],
+    color: 'from-violet-600 via-purple-600 to-indigo-700',
+    context: 'Case study project focused on improving user understanding, perceived exclusivity, and early engagement for a members-only platform.',
+    challenge: 'How might we clearly communicate exclusivity and value from the first interaction while simplifying onboarding?',
+    githubLink: 'https://github.com/Aastha-a216/firstclub-elevated-ui',
+  },
+  {
     id: 'chai-sutta-bar',
     title: 'Chai Sutta Bar',
     subtitle: 'Digital Loyalty & Experience Redesign',

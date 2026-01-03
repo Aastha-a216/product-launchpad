@@ -1,5 +1,5 @@
 import { useParams, Link } from 'react-router-dom';
-import { ArrowLeft, ExternalLink, Clock, User, Wrench, TrendingUp, CheckCircle2, Users, Target, Lightbulb, ArrowUpRight } from 'lucide-react';
+import { ArrowLeft, ExternalLink, Clock, User, Wrench, TrendingUp, CheckCircle2, Users, Target, Lightbulb, ArrowUpRight, Github } from 'lucide-react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { useRef } from 'react';
 import { Layout } from '@/components/Layout';
@@ -52,6 +52,52 @@ const CaseStudyDetail = () => {
 
   const getCaseStudyContent = () => {
     switch (id) {
+      case 'firstclub':
+        return {
+          overview: "FirstClub offers premium, invite-only experiences for a selective community. This case study project focuses on redesigning the onboarding flow to clearly communicate exclusivity from the first interaction, simplify the journey without losing the premium feel, and improve discovery through curated, interest-based experiences.",
+          problem: "For new users, the value of exclusivity is not immediately clear. The onboarding flow feels generic, discovery lacks intent, and users struggle to understand why access is limited and what makes the platform special. There's no early personalization and weak communication of 'members-only' benefits.",
+          persona: {
+            name: "Ananya Kapoor",
+            role: "Young Professional seeking curated experiences",
+            pain: "Feels overwhelmed by endless listings and doesn't understand why this platform is different",
+            goal: "Find quality, curated experiences that feel exclusive and worth her time",
+            quote: "I want to feel like I'm part of something special, not just another subscription app."
+          },
+          process: [
+            { step: "User Research", desc: "Analyzed user behavior patterns and identified key drop-off points in onboarding", icon: "🔍" },
+            { step: "Problem Mapping", desc: "Mapped unclear value propositions and weak exclusivity messaging", icon: "🎯" },
+            { step: "Solution Design", desc: "Created clear onboarding messaging and interest-based personalization", icon: "✏️" },
+            { step: "Visual Exploration", desc: "AI tools used for visual exploration while UX decisions remained human-led", icon: "🎨" },
+            { step: "Refinement", desc: "Polished UI with minimal, premium aesthetic and good white space", icon: "✨" },
+          ],
+          decisions: [
+            { title: "Exclusivity-First Messaging", reason: "New users need to immediately understand why access is limited and valuable. We led with membership benefits before showing experiences.", insight: "Clarity builds trust faster than mystery" },
+            { title: "Interest-Based Onboarding", reason: "Generic onboarding feels impersonal. Asking about preferences early creates investment and enables personalized discovery.", insight: "Early personalization increases engagement" },
+            { title: "Curated Over Endless", reason: "Quality over quantity—showing fewer, better-matched experiences reduces cognitive load and reinforces the premium positioning.", insight: "Constraints enhance perceived value" },
+          ],
+          features: [
+            { name: "Exclusivity Messaging", desc: "Clear explanation of members-only benefits from first screen", icon: "✨" },
+            { name: "Interest Selection", desc: "Personalized onboarding based on experience preferences", icon: "🎯" },
+            { name: "Curated Discovery", desc: "Intent-based home experience, not endless listings", icon: "🏠" },
+            { name: "Experience Details", desc: "Screens that reinforce limited access and special value", icon: "🎫" },
+            { name: "Membership Benefits", desc: "Clear visualization of what members gain", icon: "👑" },
+          ],
+          aiExecution: {
+            title: "AI-Assisted Visual Exploration",
+            approach: "AI tools were used to assist with visual exploration and rapid UI iteration. However, all UX decisions, user flow design, content strategy, and product thinking were driven manually—ensuring the design reflects real product reasoning, not AI-generated patterns.",
+            prompts: [
+              "Visual exploration for premium, minimal aesthetics",
+              "UI component variations for onboarding screens",
+              "Layout options for curated experience cards",
+            ]
+          },
+          nextSteps: [
+            "User testing with real premium experience seekers",
+            "A/B testing exclusivity messaging variants",
+            "Expanding personalization beyond interests",
+          ],
+          cta: "This project reflects how I approach product design—balancing clarity, usability, and business intent."
+        };
       case 'chai-sutta-bar':
         return {
           overview: "Chai Sutta Bar is India's beloved kulhad chai brand with 500+ outlets across the country. This self-initiated product case study reimagines their customer loyalty experience—creating a digital layer that turns casual chai drinkers into repeat loyal users through gamification, emotional engagement, and founder-focused analytics.",
@@ -437,8 +483,8 @@ const CaseStudyDetail = () => {
           </section>
         )}
 
-        {/* CSB Features Section - Only for Chai Sutta Bar */}
-        {id === 'chai-sutta-bar' && content?.features && (
+        {/* Features Section - For case studies with features */}
+        {(id === 'chai-sutta-bar' || id === 'firstclub') && content?.features && (
           <section className="py-20 bg-gradient-subtle">
             <div className="container mx-auto px-4 lg:px-8">
               <ScrollReveal>
@@ -470,8 +516,8 @@ const CaseStudyDetail = () => {
           </section>
         )}
 
-        {/* AI Execution Section - Only for Chai Sutta Bar */}
-        {id === 'chai-sutta-bar' && content?.aiExecution && (
+        {/* AI Execution Section */}
+        {(id === 'chai-sutta-bar' || id === 'firstclub') && content?.aiExecution && (
           <section className="py-20">
             <div className="container mx-auto px-4 lg:px-8">
               <div className="max-w-4xl mx-auto">
@@ -483,12 +529,22 @@ const CaseStudyDetail = () => {
                 </ScrollReveal>
 
                 <ScrollReveal delay={0.1}>
-                  <div className="bg-gradient-to-br from-amber-500/10 via-orange-500/5 to-red-500/10 rounded-2xl p-8 border border-amber-500/20 mb-8">
+                  <div className={cn(
+                    "rounded-2xl p-8 mb-8",
+                    id === 'firstclub' 
+                      ? "bg-gradient-to-br from-violet-500/10 via-purple-500/5 to-indigo-500/10 border border-violet-500/20" 
+                      : "bg-gradient-to-br from-amber-500/10 via-orange-500/5 to-red-500/10 border border-amber-500/20"
+                  )}>
                     <p className="text-lg text-foreground leading-relaxed mb-6">
                       {content.aiExecution.approach}
                     </p>
                     <div className="space-y-3">
-                      <span className="text-sm font-semibold text-amber-600 uppercase tracking-wider">Prompt Engineering Examples:</span>
+                      <span className={cn(
+                        "text-sm font-semibold uppercase tracking-wider",
+                        id === 'firstclub' ? "text-violet-600" : "text-amber-600"
+                      )}>
+                        {id === 'firstclub' ? 'AI Usage Examples:' : 'Prompt Engineering Examples:'}
+                      </span>
                       <ul className="space-y-2">
                         {content.aiExecution.prompts.map((prompt: string, index: number) => (
                           <motion.li 
@@ -499,7 +555,10 @@ const CaseStudyDetail = () => {
                             viewport={{ once: true }}
                             transition={{ delay: index * 0.1 }}
                           >
-                            <CheckCircle2 className="w-5 h-5 text-amber-600 shrink-0 mt-0.5" />
+                            <CheckCircle2 className={cn(
+                              "w-5 h-5 shrink-0 mt-0.5",
+                              id === 'firstclub' ? "text-violet-600" : "text-amber-600"
+                            )} />
                             <span>{prompt}</span>
                           </motion.li>
                         ))}
@@ -512,8 +571,8 @@ const CaseStudyDetail = () => {
           </section>
         )}
 
-        {/* What's Next Section - Only for Chai Sutta Bar */}
-        {id === 'chai-sutta-bar' && content?.nextSteps && (
+        {/* What's Next Section */}
+        {(id === 'chai-sutta-bar' || id === 'firstclub') && content?.nextSteps && (
           <section className="py-20 bg-gradient-subtle">
             <div className="container mx-auto px-4 lg:px-8">
               <div className="max-w-4xl mx-auto">
@@ -641,6 +700,38 @@ const CaseStudyDetail = () => {
             </ScrollReveal>
           </div>
         </section>
+
+        {/* Case Study CTA - Only for FirstClub */}
+        {id === 'firstclub' && content?.cta && (
+          <section className="py-16">
+            <div className="container mx-auto px-4 lg:px-8">
+              <ScrollReveal>
+                <div className="max-w-3xl mx-auto text-center">
+                  <motion.div
+                    className="bg-gradient-to-br from-violet-500/10 via-purple-500/5 to-indigo-500/10 rounded-2xl p-8 border border-violet-500/20"
+                    whileHover={{ scale: 1.01 }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    <p className="text-xl text-foreground font-medium mb-6 italic">
+                      "{content.cta}"
+                    </p>
+                    {study.githubLink && (
+                      <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.98 }}>
+                        <Button variant="outline" size="lg" asChild className="gap-2">
+                          <a href={study.githubLink} target="_blank" rel="noopener noreferrer">
+                            <Github className="w-5 h-5" />
+                            View on GitHub
+                            <ExternalLink className="w-4 h-4" />
+                          </a>
+                        </Button>
+                      </motion.div>
+                    )}
+                  </motion.div>
+                </div>
+              </ScrollReveal>
+            </div>
+          </section>
+        )}
 
         {/* Next Case Study CTA */}
         <section className="py-20 bg-gradient-subtle">
