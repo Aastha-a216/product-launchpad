@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { ArrowRight, Sparkles, TrendingUp, Target, BarChart3, PenTool, Users, Zap, CheckCircle2, Instagram, Youtube, Linkedin, MessageCircle, ArrowUpRight } from 'lucide-react';
+import { ArrowRight, Sparkles, TrendingUp, Target, BarChart3, PenTool, Users, Zap, CheckCircle2, MessageCircle, ArrowUpRight } from 'lucide-react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { useRef } from 'react';
 import { Button } from '@/components/ui/button';
@@ -23,29 +23,29 @@ const Index = () => {
   const approachSteps = [
     {
       icon: Target,
-      title: 'Research & Audience',
-      description: 'Deep-dive into audience personas, competitor analysis, and market trends to inform strategy.',
+      title: 'Research & Discovery',
+      description: 'Understanding user needs, business goals, and market context before designing.',
       color: 'from-blue-500/20 to-indigo-500/20',
       iconColor: 'text-blue-500'
     },
     {
       icon: PenTool,
-      title: 'Content Planning',
-      description: 'Story-driven content calendars with hooks, narratives, and platform-specific formats.',
+      title: 'UX Strategy',
+      description: 'Information architecture, user flows, and wireframes that solve real problems.',
       color: 'from-purple-500/20 to-pink-500/20',
       iconColor: 'text-purple-500'
     },
     {
       icon: Zap,
-      title: 'Platform Execution',
-      description: 'Tailored content for each platform—Instagram reels, LinkedIn carousels, Twitter threads.',
+      title: 'AI-Assisted Build',
+      description: 'Using AI tools like Lovable to rapidly prototype and iterate on designs.',
       color: 'from-amber-500/20 to-orange-500/20',
       iconColor: 'text-amber-500'
     },
     {
       icon: BarChart3,
-      title: 'Measure & Optimize',
-      description: 'Track engagement, analyze performance, and iterate for continuous growth.',
+      title: 'Measure & Iterate',
+      description: 'Testing with real users and iterating based on feedback and data.',
       color: 'from-emerald-500/20 to-teal-500/20',
       iconColor: 'text-emerald-500'
     }
@@ -53,63 +53,63 @@ const Index = () => {
 
   const contentSamples = [
     {
-      type: 'Instagram Reel',
-      title: 'Behind the Brand',
-      description: 'A day in the life at Chai Sutta Bar—authentic, raw, relatable content that builds connection.',
-      engagement: '15K+ potential views',
-      platform: Instagram
-    },
-    {
-      type: 'LinkedIn Post',
-      title: 'Brand Story Thread',
-      description: 'How a ₹3 chai became a ₹300Cr empire—storytelling that educates and inspires.',
-      engagement: '500+ reactions',
-      platform: Linkedin
-    },
-    {
-      type: 'Campaign Concept',
-      title: '#ChaiPeCharcha',
-      description: 'User-generated content campaign encouraging customers to share their chai moments.',
-      engagement: 'Community building',
+      type: 'Chai Sutta Bar',
+      title: 'Loyalty Redesign',
+      description: '₹300Cr+ brand with 550+ outlets—redesigned their digital loyalty to turn casual drinkers into repeat users through gamification.',
+      engagement: 'Real brand case study',
       platform: MessageCircle
+    },
+    {
+      type: 'FirstClub',
+      title: 'Premium Onboarding',
+      description: 'Invite-only experiences platform—improved exclusivity perception and interest-based discovery for new users.',
+      engagement: 'UX case study',
+      platform: Users
+    },
+    {
+      type: 'AI + Design',
+      title: 'How I Work',
+      description: 'I use AI (Lovable, ChatGPT, Midjourney) as execution partners while driving all UX decisions, flows, and strategy myself.',
+      engagement: 'Human-led, AI-assisted',
+      platform: Sparkles
     }
   ];
 
   const tools = [
-    { name: 'Instagram', category: 'Platform' },
-    { name: 'LinkedIn', category: 'Platform' },
-    { name: 'YouTube', category: 'Platform' },
-    { name: 'Twitter/X', category: 'Platform' },
-    { name: 'Canva', category: 'Creation' },
-    { name: 'CapCut', category: 'Creation' },
-    { name: 'Meta Business Suite', category: 'Analytics' },
-    { name: 'Google Analytics', category: 'Analytics' },
-    { name: 'Hootsuite', category: 'Management' },
-    { name: 'Buffer', category: 'Management' },
+    { name: 'Figma', category: 'Design' },
+    { name: 'Lovable AI', category: 'AI' },
+    { name: 'ChatGPT', category: 'AI' },
+    { name: 'Midjourney', category: 'AI' },
+    { name: 'Miro', category: 'Research' },
     { name: 'Notion', category: 'Planning' },
-    { name: 'ChatGPT', category: 'AI Tools' }
+    { name: 'React', category: 'Code' },
+    { name: 'Tailwind CSS', category: 'Code' },
+    { name: 'Framer Motion', category: 'Animation' },
+    { name: 'Supabase', category: 'Backend' },
+    { name: 'Vercel', category: 'Deploy' },
+    { name: 'GitHub', category: 'Version Control' }
   ];
 
   const whyHireMe = [
     {
-      title: 'Strategic Thinker',
-      description: 'I don\'t just post—I plan with purpose. Every piece of content ties back to business goals.'
+      title: 'Product Thinker',
+      description: 'I design with business goals in mind—not just pixels, but outcomes that matter.'
     },
     {
-      title: 'Creative & Consistent',
-      description: 'Fresh ideas delivered on schedule. I understand that consistency builds audiences.'
+      title: 'AI-Fluent',
+      description: 'I leverage AI tools (Lovable, ChatGPT, Midjourney) to accelerate execution while maintaining design quality.'
     },
     {
-      title: 'Data-Informed',
-      description: 'I track what works, learn what doesn\'t, and optimize relentlessly.'
+      title: 'Full-Stack Aware',
+      description: 'I understand how designs translate to code—React, Tailwind, databases, and deployment.'
     },
     {
       title: 'Fast Learner',
-      description: 'Platforms evolve, algorithms change—I stay curious and adapt quickly.'
+      description: 'New tools, frameworks, patterns—I pick them up quickly and apply them effectively.'
     },
     {
       title: 'Ownership Mentality',
-      description: 'I treat brand accounts like my own. Every post represents the brand\'s voice and values.'
+      description: 'I treat projects like my own. I care about the details, the deadlines, and the outcomes.'
     }
   ];
 
@@ -118,26 +118,70 @@ const Index = () => {
       <PageTransition>
         {/* Hero Section - Social Media Manager Focus */}
         <section ref={heroRef} className="relative min-h-screen overflow-hidden flex items-center">
-          {/* Animated Background */}
-          <div className="absolute inset-0 bg-gradient-mesh" />
-          <motion.div 
-            className="absolute top-20 right-10 w-[600px] h-[600px] rounded-full bg-accent/5 blur-3xl"
-            animate={{ 
-              scale: [1, 1.2, 1],
-              x: [0, 50, 0],
-              y: [0, -30, 0]
-            }}
-            transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
-          />
-          <motion.div 
-            className="absolute bottom-20 left-10 w-[400px] h-[400px] rounded-full bg-primary/5 blur-3xl"
-            animate={{ 
-              scale: [1, 1.3, 1],
-              x: [0, -30, 0],
-              y: [0, 50, 0]
-            }}
-            transition={{ duration: 12, repeat: Infinity, ease: "easeInOut", delay: 2 }}
-          />
+          {/* 3D Animated Background */}
+          <div className="absolute inset-0 bg-gradient-mesh overflow-hidden">
+            {/* Floating 3D Orbs */}
+            <motion.div 
+              className="absolute top-20 right-10 w-[500px] h-[500px] rounded-full"
+              style={{
+                background: 'radial-gradient(circle at 30% 30%, hsl(var(--accent) / 0.3), hsl(var(--accent) / 0.05) 60%, transparent)',
+                boxShadow: 'inset 0 0 60px hsl(var(--accent) / 0.2), 0 0 80px hsl(var(--accent) / 0.1)'
+              }}
+              animate={{ 
+                scale: [1, 1.15, 1],
+                x: [0, 40, 0],
+                y: [0, -30, 0],
+                rotateY: [0, 180, 360]
+              }}
+              transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
+            />
+            <motion.div 
+              className="absolute bottom-10 left-5 w-[350px] h-[350px] rounded-full"
+              style={{
+                background: 'radial-gradient(circle at 70% 30%, hsl(var(--primary) / 0.2), hsl(var(--primary) / 0.03) 60%, transparent)',
+                boxShadow: 'inset 0 0 50px hsl(var(--primary) / 0.15), 0 0 60px hsl(var(--primary) / 0.08)'
+              }}
+              animate={{ 
+                scale: [1, 1.25, 1],
+                x: [0, -25, 0],
+                y: [0, 40, 0],
+                rotateX: [0, 180, 360]
+              }}
+              transition={{ duration: 18, repeat: Infinity, ease: "easeInOut", delay: 2 }}
+            />
+            {/* Floating Particles */}
+            {[...Array(6)].map((_, i) => (
+              <motion.div
+                key={i}
+                className="absolute w-2 h-2 rounded-full bg-accent/40"
+                style={{
+                  left: `${15 + i * 15}%`,
+                  top: `${20 + (i % 3) * 25}%`,
+                }}
+                animate={{
+                  y: [0, -30, 0],
+                  x: [0, i % 2 === 0 ? 20 : -20, 0],
+                  opacity: [0.3, 0.7, 0.3],
+                  scale: [1, 1.5, 1]
+                }}
+                transition={{
+                  duration: 4 + i,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                  delay: i * 0.5
+                }}
+              />
+            ))}
+            {/* Grid Pattern */}
+            <div 
+              className="absolute inset-0 opacity-[0.03]"
+              style={{
+                backgroundImage: `linear-gradient(hsl(var(--foreground)) 1px, transparent 1px), 
+                                  linear-gradient(90deg, hsl(var(--foreground)) 1px, transparent 1px)`,
+                backgroundSize: '60px 60px'
+              }}
+            />
+          </div>
 
           <div className="container mx-auto px-4 lg:px-8 relative z-10">
             <div className="grid lg:grid-cols-12 gap-12 lg:gap-8 items-center">
@@ -146,18 +190,15 @@ const Index = () => {
                 className="lg:col-span-7 order-2 lg:order-1"
                 style={{ y, opacity }}
               >
-                {/* Status Badge */}
+                {/* AI-Powered Badge */}
                 <motion.div 
                   className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent/10 border border-accent/20 text-accent text-sm font-medium mb-8"
                   initial={{ opacity: 0, y: 20, scale: 0.9 }}
                   animate={{ opacity: 1, y: 0, scale: 1 }}
                   transition={{ delay: 0.2, type: "spring", stiffness: 200 }}
                 >
-                  <span className="relative flex h-2 w-2">
-                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-75"></span>
-                    <span className="relative inline-flex rounded-full h-2 w-2 bg-accent"></span>
-                  </span>
-                  Open for Social Media Manager roles
+                  <Sparkles className="w-4 h-4" />
+                  AI-Powered Product Design
                 </motion.div>
                 
                 {/* Main Headline */}
@@ -167,14 +208,14 @@ const Index = () => {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.3, duration: 0.6 }}
                 >
-                  <span className="block">I help brands grow</span>
-                  <span className="block gradient-text">through strategy-led</span>
+                  <span className="block">I design products</span>
+                  <span className="block gradient-text">with AI-powered</span>
                   <span className="block">
-                    social media
+                    execution
                     <motion.span 
                       className="inline-block ml-2"
-                      animate={{ rotate: [0, 10, 0] }}
-                      transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                      animate={{ rotate: [0, 15, 0], scale: [1, 1.1, 1] }}
+                      transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
                     >
                       ✦
                     </motion.span>
@@ -189,16 +230,16 @@ const Index = () => {
                   transition={{ delay: 0.5, duration: 0.5 }}
                 >
                   <p className="text-lg lg:text-xl text-muted-foreground leading-relaxed mb-4 max-w-xl">
-                    Not random posts. <span className="text-foreground font-medium">Strategic content</span> that builds audiences, drives engagement, and grows brands.
+                    Product designer who uses <span className="text-foreground font-medium">AI as an execution partner</span>—delivering real, working products faster than traditional workflows.
                   </p>
                   <div className="flex flex-wrap items-center gap-2 text-sm text-muted-foreground">
-                    <span className="px-3 py-1 rounded-full bg-secondary/50">Strategy</span>
+                    <span className="px-3 py-1 rounded-full bg-secondary/50">Research</span>
                     <ArrowRight className="w-4 h-4 text-accent" />
-                    <span className="px-3 py-1 rounded-full bg-secondary/50">Content</span>
+                    <span className="px-3 py-1 rounded-full bg-secondary/50">UX Design</span>
                     <ArrowRight className="w-4 h-4 text-accent" />
-                    <span className="px-3 py-1 rounded-full bg-secondary/50">Engagement</span>
+                    <span className="px-3 py-1 rounded-full bg-secondary/50">AI Build</span>
                     <ArrowRight className="w-4 h-4 text-accent" />
-                    <span className="px-3 py-1 rounded-full bg-secondary/50">Analytics</span>
+                    <span className="px-3 py-1 rounded-full bg-secondary/50">Ship</span>
                   </div>
                 </motion.div>
 
@@ -240,15 +281,15 @@ const Index = () => {
                 >
                   <div className="flex items-center gap-2 text-muted-foreground">
                     <div className="w-8 h-8 rounded-lg bg-secondary flex items-center justify-center">
-                      <TrendingUp className="w-4 h-4" />
+                      <Sparkles className="w-4 h-4" />
                     </div>
-                    <span>Strategy-First Approach</span>
+                    <span>AI-Assisted Workflow</span>
                   </div>
                   <div className="flex items-center gap-2 text-muted-foreground">
                     <div className="w-8 h-8 rounded-lg bg-secondary flex items-center justify-center">
-                      <Users className="w-4 h-4" />
+                      <Target className="w-4 h-4" />
                     </div>
-                    <span>Audience-Centric Content</span>
+                    <span>Product-Focused Design</span>
                   </div>
                 </motion.div>
               </motion.div>
@@ -279,14 +320,14 @@ const Index = () => {
                   <div className="relative w-72 h-72 lg:w-[400px] lg:h-[480px] rounded-3xl overflow-hidden shadow-2xl">
                     <img
                       src={profileImage}
-                      alt="Aastha Srivastava - Social Media Strategist"
+                      alt="Aastha Srivastava - Product Designer"
                       className="w-full h-full object-cover"
                     />
                     {/* Overlay gradient */}
                     <div className="absolute inset-0 bg-gradient-to-t from-primary/20 via-transparent to-transparent" />
                   </div>
                   
-                  {/* Floating Card - Social Platforms */}
+                  {/* Floating Card - AI Tools */}
                   <motion.div 
                     className="absolute -bottom-6 -left-6 glass rounded-2xl p-5 shadow-elevated"
                     initial={{ opacity: 0, x: -30, y: 30 }}
@@ -296,24 +337,28 @@ const Index = () => {
                   >
                     <div className="flex items-center gap-3">
                       <div className="flex -space-x-2">
-                        <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-pink-500 to-rose-500 flex items-center justify-center">
-                          <Instagram className="w-5 h-5 text-white" />
+                        <motion.div 
+                          className="w-10 h-10 rounded-xl bg-gradient-to-br from-violet-500 to-purple-600 flex items-center justify-center"
+                          animate={{ rotateY: [0, 360] }}
+                          transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
+                        >
+                          <Sparkles className="w-5 h-5 text-white" />
+                        </motion.div>
+                        <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-emerald-500 to-teal-600 flex items-center justify-center">
+                          <Zap className="w-5 h-5 text-white" />
                         </div>
-                        <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-blue-600 to-blue-700 flex items-center justify-center">
-                          <Linkedin className="w-5 h-5 text-white" />
-                        </div>
-                        <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-red-500 to-red-600 flex items-center justify-center">
-                          <Youtube className="w-5 h-5 text-white" />
+                        <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-orange-500 to-amber-600 flex items-center justify-center">
+                          <PenTool className="w-5 h-5 text-white" />
                         </div>
                       </div>
                       <div>
-                        <div className="text-sm font-semibold text-foreground">Multi-Platform</div>
-                        <div className="text-xs text-muted-foreground">Strategy Expert</div>
+                        <div className="text-sm font-semibold text-foreground">AI-Powered</div>
+                        <div className="text-xs text-muted-foreground">Design Workflow</div>
                       </div>
                     </div>
                   </motion.div>
 
-                  {/* Floating Card - Content */}
+                  {/* Floating Card - Skills */}
                   <motion.div 
                     className="absolute -top-4 -right-4 glass rounded-2xl px-4 py-3 shadow-elevated"
                     initial={{ opacity: 0, x: 30, y: -30 }}
@@ -322,8 +367,8 @@ const Index = () => {
                     whileHover={{ scale: 1.05, y: -5 }}
                   >
                     <div className="flex items-center gap-2">
-                      <TrendingUp className="w-4 h-4 text-accent" />
-                      <span className="text-sm font-medium text-foreground">Content • Strategy • Growth</span>
+                      <Target className="w-4 h-4 text-accent" />
+                      <span className="text-sm font-medium text-foreground">UX • UI • Product</span>
                     </div>
                   </motion.div>
                 </div>
@@ -356,8 +401,20 @@ const Index = () => {
         </section>
 
         {/* My Approach Section */}
-        <section className="py-24 lg:py-32 relative">
+        <section className="py-24 lg:py-32 relative overflow-hidden">
           <div className="absolute inset-0 bg-gradient-subtle" />
+          {/* 3D Background Element */}
+          <motion.div 
+            className="absolute -bottom-40 -left-40 w-[400px] h-[400px] rounded-full opacity-20"
+            style={{
+              background: 'radial-gradient(circle, hsl(var(--primary) / 0.3), transparent 70%)',
+            }}
+            animate={{ 
+              scale: [1, 1.3, 1],
+              rotate: [0, 180, 360]
+            }}
+            transition={{ duration: 25, repeat: Infinity, ease: "easeInOut" }}
+          />
           <div className="container mx-auto px-4 lg:px-8 relative">
             <ScrollReveal>
               <div className="text-center mb-16">
@@ -367,13 +424,13 @@ const Index = () => {
                   whileInView={{ opacity: 1 }}
                   viewport={{ once: true }}
                 >
-                  My Approach
+                  My Process
                 </motion.span>
                 <h2 className="font-display text-display-md lg:text-display-lg text-foreground mb-4">
-                  How I Grow Brands on Social
+                  How I Design Products
                 </h2>
                 <p className="text-muted-foreground max-w-2xl mx-auto text-lg">
-                  A systematic approach that turns followers into fans and content into conversions.
+                  A human-led, AI-assisted workflow that delivers real products faster.
                 </p>
               </div>
             </ScrollReveal>
@@ -450,9 +507,21 @@ const Index = () => {
           </div>
         </section>
 
-        {/* Content Samples Section */}
-        <section className="py-24 lg:py-32 relative">
+        {/* Projects Section with 3D Effects */}
+        <section className="py-24 lg:py-32 relative overflow-hidden">
           <div className="absolute inset-0 bg-gradient-subtle" />
+          {/* 3D Floating Elements */}
+          <motion.div 
+            className="absolute -top-20 -right-20 w-[300px] h-[300px] rounded-full opacity-30"
+            style={{
+              background: 'radial-gradient(circle, hsl(var(--accent) / 0.2), transparent 70%)',
+            }}
+            animate={{ 
+              scale: [1, 1.2, 1],
+              rotate: [0, 90, 0]
+            }}
+            transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
+          />
           <div className="container mx-auto px-4 lg:px-8 relative">
             <ScrollReveal>
               <div className="text-center mb-16">
@@ -462,13 +531,13 @@ const Index = () => {
                   whileInView={{ opacity: 1 }}
                   viewport={{ once: true }}
                 >
-                  Content Ideas
+                  Real Work
                 </motion.span>
                 <h2 className="font-display text-display-md lg:text-display-lg text-foreground mb-4">
-                  Sample Content Concepts
+                  Projects & Case Studies
                 </h2>
                 <p className="text-muted-foreground max-w-2xl mx-auto text-lg">
-                  A glimpse into how I think about content strategy and creative execution.
+                  Real brands, real challenges—showcasing product thinking and AI-assisted execution.
                 </p>
               </div>
             </ScrollReveal>
@@ -694,7 +763,7 @@ const Index = () => {
                   Let's grow your brand <span className="gradient-text">together</span>
                 </h2>
                 <p className="text-muted-foreground text-lg mb-10">
-                  I'm actively seeking Social Media Manager opportunities where I can drive real growth through strategic content.
+                  I combine product thinking with AI-powered execution to create experiences that users love and businesses need.
                 </p>
                 <div className="flex flex-wrap justify-center gap-4">
                   <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.98 }}>
