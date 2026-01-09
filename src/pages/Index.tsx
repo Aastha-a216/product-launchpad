@@ -9,6 +9,8 @@ import { ScrollReveal } from '@/components/ScrollReveal';
 import { ProjectCard } from '@/components/ProjectCard';
 import { caseStudies } from '@/data/mockData';
 import profileImage from '@/assets/aastha-profile.jpg';
+import chaiMockup from '@/assets/chai-sutta-bar-mockup.png';
+import firstclubMockup from '@/assets/firstclub-mockup.png';
 
 const Index = () => {
   const heroRef = useRef(null);
@@ -57,21 +59,27 @@ const Index = () => {
       title: 'Loyalty Redesign',
       description: '₹300Cr+ brand with 550+ outlets—redesigned their digital loyalty to turn casual drinkers into repeat users through gamification.',
       engagement: 'Real brand case study',
-      platform: MessageCircle
+      platform: MessageCircle,
+      link: '/case-study/chai-sutta-bar',
+      image: chaiMockup
     },
     {
       type: 'FirstClub',
       title: 'Premium Onboarding',
       description: 'Invite-only experiences platform—improved exclusivity perception and interest-based discovery for new users.',
       engagement: 'UX case study',
-      platform: Users
+      platform: Users,
+      link: '/case-study/firstclub',
+      image: firstclubMockup
     },
     {
       type: 'AI + Design',
       title: 'How I Work',
       description: 'I use AI (Lovable, ChatGPT, Midjourney) as execution partners while driving all UX decisions, flows, and strategy myself.',
       engagement: 'Human-led, AI-assisted',
-      platform: Sparkles
+      platform: Sparkles,
+      link: '/about',
+      image: null
     }
   ];
 
@@ -545,24 +553,38 @@ const Index = () => {
             <div className="grid md:grid-cols-3 gap-8">
               {contentSamples.map((sample, index) => (
                 <ScrollReveal key={sample.title} delay={index * 0.15}>
-                  <motion.div 
-                    className="bg-card rounded-2xl p-6 border border-border/50 h-full group"
-                    whileHover={{ y: -8, scale: 1.02 }}
-                    transition={{ type: "spring", stiffness: 300 }}
-                  >
-                    <div className="flex items-center gap-3 mb-4">
-                      <div className="w-10 h-10 rounded-xl bg-secondary flex items-center justify-center text-accent">
-                        <sample.platform className="w-5 h-5" />
+                  <Link to={sample.link}>
+                    <motion.div 
+                      className="bg-card rounded-2xl border border-border/50 h-full group overflow-hidden cursor-pointer"
+                      whileHover={{ y: -8, scale: 1.02 }}
+                      transition={{ type: "spring", stiffness: 300 }}
+                    >
+                      {sample.image && (
+                        <div className="relative h-48 overflow-hidden">
+                          <img 
+                            src={sample.image} 
+                            alt={sample.title}
+                            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                          />
+                          <div className="absolute inset-0 bg-gradient-to-t from-card via-transparent to-transparent" />
+                        </div>
+                      )}
+                      <div className="p-6">
+                        <div className="flex items-center gap-3 mb-4">
+                          <div className="w-10 h-10 rounded-xl bg-secondary flex items-center justify-center text-accent group-hover:bg-accent/10 transition-colors">
+                            <sample.platform className="w-5 h-5" />
+                          </div>
+                          <span className="text-xs uppercase tracking-wider text-muted-foreground font-medium">{sample.type}</span>
+                        </div>
+                        <h3 className="font-display font-semibold text-foreground text-lg mb-2 group-hover:text-accent transition-colors">{sample.title}</h3>
+                        <p className="text-sm text-muted-foreground leading-relaxed mb-4">{sample.description}</p>
+                        <div className="flex items-center gap-2 text-xs text-accent font-medium">
+                          <TrendingUp className="w-3 h-3" />
+                          {sample.engagement}
+                        </div>
                       </div>
-                      <span className="text-xs uppercase tracking-wider text-muted-foreground font-medium">{sample.type}</span>
-                    </div>
-                    <h3 className="font-display font-semibold text-foreground text-lg mb-2">{sample.title}</h3>
-                    <p className="text-sm text-muted-foreground leading-relaxed mb-4">{sample.description}</p>
-                    <div className="flex items-center gap-2 text-xs text-accent font-medium">
-                      <TrendingUp className="w-3 h-3" />
-                      {sample.engagement}
-                    </div>
-                  </motion.div>
+                    </motion.div>
+                  </Link>
                 </ScrollReveal>
               ))}
             </div>

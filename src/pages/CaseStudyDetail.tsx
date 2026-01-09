@@ -11,6 +11,8 @@ import { cn } from '@/lib/utils';
 import { FintechDashboard } from '@/components/case-studies/FintechDashboard';
 import { MarketplaceDashboard } from '@/components/case-studies/MarketplaceDashboard';
 import { DeliveryDashboard } from '@/components/case-studies/DeliveryDashboard';
+import chaiMockup from '@/assets/chai-sutta-bar-mockup.png';
+import firstclubMockup from '@/assets/firstclub-mockup.png';
 
 const CaseStudyDetail = () => {
   const { id } = useParams();
@@ -45,6 +47,17 @@ const CaseStudyDetail = () => {
         return <MarketplaceDashboard orders={orders} inventory={inventory} stats={sellerStats} />;
       case 'delivery-partner':
         return <DeliveryDashboard earnings={earnings} shifts={shifts} stats={deliveryStats} />;
+      default:
+        return null;
+    }
+  };
+
+  const getMockupImage = () => {
+    switch (id) {
+      case 'chai-sutta-bar':
+        return chaiMockup;
+      case 'firstclub':
+        return firstclubMockup;
       default:
         return null;
     }
@@ -341,32 +354,52 @@ const CaseStudyDetail = () => {
           </div>
         </section>
 
-        {/* Context Section */}
+        {/* Context Section with Mockup */}
         <section className="py-20">
           <div className="container mx-auto px-4 lg:px-8">
-            <div className="max-w-4xl mx-auto">
-              <ScrollReveal>
-                <div className="mb-16">
-                  <span className="text-accent font-medium text-sm uppercase tracking-wider mb-3 block">Overview</span>
-                  <p className="text-xl lg:text-2xl text-foreground leading-relaxed">
-                    {content?.overview}
-                  </p>
-                </div>
-              </ScrollReveal>
-
-              <ScrollReveal delay={0.1}>
-                <div className="p-8 bg-secondary/30 rounded-2xl border border-border/50 mb-8">
-                  <div className="flex items-start gap-4 mb-4">
-                    <div className="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center shrink-0">
-                      <Target className="w-6 h-6 text-accent" />
-                    </div>
-                    <div>
-                      <h3 className="font-display text-lg font-semibold text-foreground mb-2">Design Challenge</h3>
-                      <p className="text-muted-foreground text-lg italic">"{study.challenge}"</p>
+            <div className="max-w-6xl mx-auto">
+              <div className="grid lg:grid-cols-2 gap-12 items-center mb-16">
+                <ScrollReveal>
+                  <div>
+                    <span className="text-accent font-medium text-sm uppercase tracking-wider mb-3 block">Overview</span>
+                    <p className="text-xl lg:text-2xl text-foreground leading-relaxed mb-8">
+                      {content?.overview}
+                    </p>
+                    <div className="p-8 bg-secondary/30 rounded-2xl border border-border/50">
+                      <div className="flex items-start gap-4">
+                        <div className="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center shrink-0">
+                          <Target className="w-6 h-6 text-accent" />
+                        </div>
+                        <div>
+                          <h3 className="font-display text-lg font-semibold text-foreground mb-2">Design Challenge</h3>
+                          <p className="text-muted-foreground text-lg italic">"{study.challenge}"</p>
+                        </div>
+                      </div>
                     </div>
                   </div>
-                </div>
-              </ScrollReveal>
+                </ScrollReveal>
+                
+                {getMockupImage() && (
+                  <ScrollReveal direction="right" delay={0.2}>
+                    <motion.div 
+                      className="relative"
+                      whileHover={{ scale: 1.02, rotateY: 5 }}
+                      transition={{ type: "spring", stiffness: 200 }}
+                    >
+                      <motion.div 
+                        className="absolute -inset-4 bg-gradient-accent rounded-3xl opacity-20 blur-2xl"
+                        animate={{ scale: [1, 1.05, 1], opacity: [0.2, 0.3, 0.2] }}
+                        transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                      />
+                      <img 
+                        src={getMockupImage()!}
+                        alt={`${study.title} App Mockup`}
+                        className="relative rounded-3xl shadow-2xl max-w-xs mx-auto"
+                      />
+                    </motion.div>
+                  </ScrollReveal>
+                )}
+              </div>
             </div>
           </div>
         </section>
